@@ -1,0 +1,177 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100v;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.ludo-container {
+  width: 450px;
+  margin: 20px auto;
+}
+
+.ludo-container .ludo {
+  height: 450px;
+  width: 100%;
+  background-image: url("./ludo-bg.jpg");
+  background-size: contain;
+  position: relative;
+}
+
+.player-pieces {
+  height: 100%;
+  width: 100%;
+}
+
+.player-piece {
+  width: 5%;
+  height: 5%;
+  border: 2px solid;
+  border-radius: 10px;
+  position: absolute;
+  transform: translate(17.5%, 17.5%);
+  transition: all 0.2s;
+  z-index: 1;
+}
+.player-piece.highlight {
+  cursor: pointer;
+  border: 2px dashed;
+  animation: spin 1s infinite linear;
+}
+@keyframes spin {
+  0% {
+    transform: translate(17.5%, 17.5%) rotate(0deg);
+  }
+  50% {
+    transform: translate(17.5%, 17.5%) rotate(180deg) scale(1.2);
+  }
+  100% {
+    transform: translate(17.5%, 17.5%) rotate(360deg);
+  }
+}
+
+[player-id="blue"].player-piece {
+  background-color: #2eafff;
+}
+
+[player-id="green"].player-piece {
+  background-color: #00b550;
+}
+
+[player-id="yellow"].player-piece {
+  background-color: #f4ee00;
+}
+
+[player-id="red"].player-piece {
+  background-color: #ff4d4d;
+}
+
+.player-base {
+  width: 40%;
+  height: 40%;
+  border: 30px solid;
+  position: absolute;
+}
+
+.player-bases [player-id="blue"].player-base {
+  bottom: 0;
+  left: 0;
+  border-color: #1295e7;
+}
+
+.player-bases [player-id="green"].player-base {
+  top: 0;
+  right: 0;
+  border-color: #049645;
+}
+
+.player-bases [player-id="yellow"].player-base {
+  top: 0;
+  left: 0;
+  border-color: #f9df39;
+}
+
+.player-bases [player-id="red"].player-base {
+  bottom: 0;
+  right: 0;
+  border-color: red;
+}
+
+.player-base.highlight {
+  animation: border-blink 0.7s infinite ease-in-out;
+}
+
+@keyframes border-blink {
+  50% {
+    border-color: rgba(255, 255, 255, 0.65);
+  }
+}
+
+.btn {
+  padding: 8px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+}
+
+#dice-btn {
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+#dice-btn:disabled {
+  opacity: 0.5;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.dice-value {
+  width: 40px;
+  height: 40px;
+}
+
+#active-player {
+  text-transform: capitalize;
+}
+
+@media screen and (max-width: 550px) {
+  .ludo-container {
+    width: 400px;
+    margin: 15px auto;
+  }
+
+  .ludo-container .ludo {
+    height: 400px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .ludo-container {
+    width: 350px;
+  }
+
+  .ludo-container .ludo {
+    height: 350px;
+  }
+
+  .player-base {
+    border-width: 23px;
+  }
+}
